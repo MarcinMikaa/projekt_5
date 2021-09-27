@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    padding: 30px;
+} 
+.header {
+    display: flex;
+    align-items: center;
+}
+.left {
+    display: flex;
+    flex: 1;
+}
+.right {
+    display: flex;
+    align-items: center;
+}
+.lupa {
+    height:25px;
+    width: 25px;
+    color: #5B63A9;
+    padding: 10px;
+}
+.msg {
+    width: 12px;
+    height: 12px;
+    background-color: #F7685B;
+    border-radius: 50%;
+    position: relative;
+    left: 14px;
+    top: 6px;
+}
+.input {
+    color: gray;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    width: 700px;
+    font-size: 20px;
+    line-height: 15px;
+}
+.bell {
+    margin-right: 30px;
+    width: 25px;
+    height: 27px;
+}
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 1px;
+    border: 4px solid pink;    
+}
+.main-left {
+    margin: 30px;
+    width: 70%;
+}
+.text {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+    color: #1D262C;
+    padding-right: 30px;
+}
+.span_h1 {
+    color: rgb(244, 30, 112);
+}
+.text button {
+    background-color: #884CB2;
+    color: white;
+    font-size: large;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    width: 190px;
+    height: 50px;
+    float: left;
+    margin-left: 10px;
+}
+.sp2 {
+    border: 2px solid #FFFFFF;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    padding-right: 3.5px;
+    padding-left: 3.5px;
+}
+h3 {
+    font-size: x-large;
+    font-weight: 500;
+    margin: 20px;
+}
+.rows {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.circle {
+    display: flex;
+    width: 10px;
+    height: 10px;
+    border-radius: 90%;
+    background: linear-gradient(133.9deg, rgba(243, 71, 122, 0.7) 0.24%, rgba(136, 76, 178, 0.7) 90%);
+    margin: 10px;
+}
+.circlev2 {
+    width: 10px;
+    height: 10px;
+    border-radius: 90%;
+    background-color: black;
+    margin: 10px;
+}
+.list p, .list2 p {
+    font-size: larger;
+    letter-spacing: 0.5px;
+}
+.pending span {
+    background-color: rgba(242, 153, 74, 0.2);
+    border-radius: 20px;
+    color:#F2994A;  
+    padding: 10px;
+}
+.in-progress span{
+    background-color: rgba(86, 204, 242, 0.2);
+    border-radius: 20px;
+    color: #56CCF2;
+    padding: 10px;
+}
+.inactive span{
+    background-color: rgba(235, 87, 87, 0.2);
+    border-radius: 20px;
+    color: #EB5757;
+    padding: 4px;
+}
+.completed span {
+    background-color: #27AE6033;
+    border-radius: 20px;
+    color: #27AE60;
+    padding: 10px;
+}
+.cancelled span {
+    background-color: #ffafaf;
+    border-radius: 20px;
+    color: #EB5757;
+    padding: 10px;
+}
+.crc_tx {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    color: rgb(77, 77, 77);
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+}
+.crc {
+    border-radius: 100%;
+    border: 4px solid green;
+    margin-right: 3px;
+    width: 6px;
+    height: 6px;
+}
+.crc_n {
+    border-radius: 100%;
+    border: 4px solid yellow;
+    margin-right: 3px;
+    width: 6px;
+    height: 6px;
+}
+.crc_c {
+    border-radius: 100%;
+    border: 4px solid red;
+    margin-right: 3px;
+    width: 6px;
+    height: 6px;
+}
+.people {
+    display: flex;
+    text-align: center;
+}
+.first {
+    background-color: #FBAC65;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    
+}
+.second {
+    background-color: lightskyblue;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    position: relative;
+    left: -9px;
+}
+.third {
+    background-color: rgb(255, 255, 93);
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    position: relative;
+    left: -18px;
+}
+.four {
+    background-color: #6FCF97;
+    color: white;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    left: -27px;
+}
+hr {
+    background-color: lightgrey;
+    border: none;
+    height: 1px;
+    width: 100%;
+    margin: 10px;
+}
+.complete {
+    display: flex;
+    align-items: center;
+}
+.more {
+    width: 30px;
+    height: 30px;
+    background-color: #F2F2F2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.more div {
+    background-color: rgb(170, 170, 170);
+    margin: 1px;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+}
+.list2 {
+    opacity: 0.6;
+}
+.text3 {
+    flex: 2;
+}
+.pending, .in-progress, .completed, .cancelled {
+    flex: 1;
+}
+.crc_tx {
+    flex: 1;
+}
+.people {
+    flex: 1;
+}
