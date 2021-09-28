@@ -5,11 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-const dataPut = {
-    name: 'Hardik Savani',
-    job: 'Blog Writer'
-};
-
 app.get('/tasks', (req, res) => {
     res.json(data.tasks);
 });
