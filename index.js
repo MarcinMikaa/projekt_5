@@ -1,4 +1,3 @@
-const e = require('express');
 const express = require('express');
 const data = require('./tasks');
 
@@ -59,14 +58,15 @@ app.put('/tasks/:id', (req, res) => {
 
     data.tasks.push(task);
 
-    res.json(task);
-    console.log(data.tasks);
+    res.json(data.tasks);
 });
 
 app.delete('/tasks/:id', (req, res) => {
+    const taskDelete = req.body.id;
 
+    data.tasks.splice(taskDelete - 1, 1);
+
+    res.json(data.tasks);
 });
-
-
 
 app.listen(3000);
