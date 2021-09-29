@@ -46,12 +46,20 @@ app.post('/tasks', (req, res) => {
 });
 
 app.put('/tasks/:id', (req, res) => {
-    const task = {
-        id: Math.max(...data.tasks.map(task => task.id)) + 1,
-        message: req.body.message,
-    };
+    const id = req.body.id;
+    const newMessage = req.body.message;
+    const newStatus = req.body.status;
 
-    data.tasks.push(task);
+    const existingTask = data.tasks.find(element => element.id == id);
+
+    if (!existingTask) {
+        res.status(404);
+        res.json({ error: "Task with given id doesn't exists"});
+        return;
+    }
+
+    existingTask.message = newMessage;
+    existingTask.status = newStatus;
 
     res.status(200);
     res.json(data.tasks);
@@ -59,6 +67,14 @@ app.put('/tasks/:id', (req, res) => {
 
 app.delete('/tasks/:id', (req, res) => {
     const taskDelete = req.body.id;
+
+    const existingTask = data.tasks.find(element => element.id == taskDelete);
+
+    if (!existingTask) {
+        res.status(404);
+        res.json({ error: "Task with given id doesn't exists"});
+        return;
+    }
 
     data.tasks.splice(taskDelete - 1, 1);
 
