@@ -53,6 +53,7 @@ app.put('/tasks/:id', (req, res) => {
 
     data.tasks.push(task);
 
+    res.status(200);
     res.json(data.tasks);
 });
 
@@ -61,6 +62,7 @@ app.delete('/tasks/:id', (req, res) => {
 
     data.tasks.splice(taskDelete - 1, 1);
 
+    res.status(204);
     res.json(data.tasks);
 });
 
