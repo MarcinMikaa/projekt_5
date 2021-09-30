@@ -11,8 +11,11 @@ const Task = require('./models/task');
 app.get('/tasks', (req, res) => {
 
     Task.find({}).then((data) => {
+
         res.json(data);
+
     }).catch(error => {
+
         console.log(error);
     });
 
@@ -21,14 +24,14 @@ app.get('/tasks', (req, res) => {
 app.get('/tasks/:id', (req, res) => {
     const id = req.params.id;
 
-    Task.findOne({_id: id}).then((data) => {
-        res.json(data);
+    // Task.findOne({_id: id}).then((data) => {
+    //     res.json(data);
 
-    }).catch(error => {
+    // }).catch(error => {
 
-        console.error(error);
-        res.status(404);
-    });
+    //     console.error(error);
+    //     res.status(404);
+    // });
 
 
 });
