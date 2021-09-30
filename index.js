@@ -28,7 +28,6 @@ app.get('/tasks/:id', (req, res) => {
 
         console.error(error);
         res.status(404);
-        res.json({error: "Task with given id doesn't exists"});
     });
 
 
