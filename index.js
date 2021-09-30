@@ -25,6 +25,13 @@ app.get('/tasks/:id', (req, res) => {
     const id = req.params.id;
 
     Task.findOne({_id: id}).then((data) => {
+
+        if (!data) {
+            res.status(404);
+            res.json({ error: "Task with given id doesn't exists"});
+            return;
+        }
+
         res.json(data);
 
     }).catch(error => {
@@ -43,9 +50,9 @@ app.post('/tasks', (req, res) => {
     new Task({ message: messageToAdd, status: statusToAdd}).save().then((data) => {
 
         res.status(201);
-        res.json(Task)
+        res.json(data);
     }).catch(error => {
-        
+
         res.json(error);
     });
 
@@ -81,18 +88,19 @@ app.delete('/tasks/:id', (req, res) => {
     Task.deleteOne({_id: id}).then((data) => {
 
         if (!data) {
-            res.json({ error: "Task with given id doesn't exists"});
             res.status(404);
+            res.json({ error: "Task with given id doesn't exists"});
+            
             return;
         }
 
+        res.send(data);
         res.status(204);
-        res.json(data);
 
     }).catch(error => {
 
-        res.json({ error: "Task with given id doesn't exists"});
         res.status(404);
+        res.json({ error: "Task with given id doesn't exists"}); 
     });
  
 });
