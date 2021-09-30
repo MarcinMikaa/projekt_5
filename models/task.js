@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Task = mongoose.model('Task', {
     message: {
-        type: String
+        type: String,
     },
     status: {
         type: String

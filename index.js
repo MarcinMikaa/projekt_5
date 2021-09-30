@@ -64,7 +64,7 @@ app.put('/tasks/:id', (req, res) => {
     const newMessage = req.body.message;
     const newStatus = req.body.status;
 
-    Task.updateOne({_id: id}, {message: newMessage, status: newStatus}).then((data) => {
+    Task.updateOne({_id: id}, {message: newMessage, status: newStatus}).orFail().then((data) => {
 
         if (!data) {
             res.json({ error: "Task with given id doesn't exists"});
@@ -85,12 +85,11 @@ app.put('/tasks/:id', (req, res) => {
 app.delete('/tasks/:id', (req, res) => {
     const id = req.params.id;
 
-    Task.deleteOne({_id: id}).then((data) => {
+    Task.deleteOne({_id: id}).orFail().then((data) => {
 
         if (!data) {
             res.status(404);
             res.json({ error: "Task with given id doesn't exists"});
-            
             return;
         }
 
