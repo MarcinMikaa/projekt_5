@@ -1,26 +1,37 @@
 const express = require('express');
 const data = require('./tasks');
+require('./mongo');
 
 const app = express();
-
 app.use(express.json());
 
+const Task = require('./models/task');
+
+
 app.get('/tasks', (req, res) => {
-    res.json(data.tasks);
+
+    Task.find({}).then((data) => {
+        res.json(data);
+    }).catch(error => {
+        console.log(error);
+    });
+
 });
 
 app.get('/tasks/:id', (req, res) => {
     const id = req.params.id;
 
-    const task = data.tasks.find(element => element.id == id);
+    Task.findOne({_id: id}).then((data) => {
+        res.json(data);
 
-    if (!task) {
+    }).catch(error => {
+
+        console.error(error);
         res.status(404);
-        res.json({ error: "Task with this id doesn't exist"});
-        return;
-    }
+        res.json({error: "Task with given id doesn't exists"});
+    });
 
-    res.json(task);
+
 });
 
 app.post('/tasks', (req, res) => {
