@@ -24,75 +24,77 @@ app.get('/tasks', (req, res) => {
 app.get('/tasks/:id', (req, res) => {
     const id = req.params.id;
 
-    // Task.findOne({_id: id}).then((data) => {
-    //     res.json(data);
+    Task.findOne({_id: id}).then((data) => {
+        res.json(data);
 
-    // }).catch(error => {
+    }).catch(error => {
 
-    //     console.error(error);
-    //     res.status(404);
-    // });
+        console.error(error);
+        res.status(404);
+    });
 
 
 });
 
 app.post('/tasks', (req, res) => {
-    const message = req.body.message;
+    const messageToAdd = req.body.message;
+    const statusToAdd = req.body.status;
 
-    const existingTask = data.tasks.find(task => task.message === message);
+    new Task({ message: messageToAdd, status: statusToAdd}).save().then((data) => {
 
-    if (existingTask) {
-        res.status(400);
-        res.json({ error: 'Task with given message already exists'});
-        return;
-    }
+        res.status(201);
+        res.json(Task)
+    }).catch(error => {
+        
+        res.json(error);
+    });
 
-    const task = {
-        id: Math.max(...data.tasks.map(task => task.id)) + 1,
-        message: message,
-    };
-
-    data.tasks.push(message);
-
-    res.status(201);
-    res.json(task);
 });
+
 
 app.put('/tasks/:id', (req, res) => {
     const id = req.body.id;
     const newMessage = req.body.message;
     const newStatus = req.body.status;
 
-    const existingTask = data.tasks.find(element => element.id == id);
+    Task.updateOne({_id: id}, {message: newMessage, status: newStatus}).then((data) => {
 
-    if (!existingTask) {
-        res.status(404);
+        if (!data) {
+            res.json({ error: "Task with given id doesn't exists"});
+            res.status(404);
+            return;
+        }
+
+        res.status(200);
+        res.json(data);
+    }).catch(error => {
+
         res.json({ error: "Task with given id doesn't exists"});
-        return;
-    }
-
-    existingTask.message = newMessage;
-    existingTask.status = newStatus;
-
-    res.status(200);
-    res.json(data.tasks);
+        res.status(404);
+    });
 });
 
+
 app.delete('/tasks/:id', (req, res) => {
-    const taskDelete = req.body.id;
+    const id = req.params.id;
 
-    const existingTask = data.tasks.find(element => element.id == taskDelete);
+    Task.deleteOne({_id: id}).then((data) => {
 
-    if (!existingTask) {
-        res.status(404);
+        if (!data) {
+            res.json({ error: "Task with given id doesn't exists"});
+            res.status(404);
+            return;
+        }
+
+        res.status(204);
+        res.json(data);
+
+    }).catch(error => {
+
         res.json({ error: "Task with given id doesn't exists"});
-        return;
-    }
-
-    data.tasks.splice(taskDelete - 1, 1);
-
-    res.status(204);
-    res.json(data.tasks);
+        res.status(404);
+    });
+ 
 });
 
 app.listen(3000);
